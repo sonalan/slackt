@@ -16,7 +16,19 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
 
 import SidebarOption from '../SidebarOption/SidebarOption';
+import { db } from '../../firebase';
 export default function Sidebar() {
+
+    const addChannel = ()=>{
+        const channelName = prompt('Please enter a channel name');
+
+        if(channelName){
+            db.collection('rooms').add({
+                name:channelName
+            })
+            console.log(`${channelName} channel is created`);
+        }
+    }
     return (
         <SidebarContainer>
             <SidebarHeader>
@@ -41,12 +53,13 @@ export default function Sidebar() {
             <hr/>
             <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
             <hr/>
-            <SidebarOption Icon={AddIcon} title="Add Channel" action={AddChannel} />
+            <SidebarOption Icon={AddIcon} title="Add Channel" doAction={addChannel} />
+            
         </SidebarContainer>
     )
 }
 
-const AddChannel = ()=>{ console.log("do add channel")}
+
 const SidebarContainer = styled.div`
     background-color: var(--slack-color);
     color: #ffffff;
