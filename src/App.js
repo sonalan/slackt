@@ -1,5 +1,6 @@
 import React from 'react'; 
 import './App.css';
+import styled from 'styled-components';
 
 import {
   BrowserRouter as Router,
@@ -8,21 +9,30 @@ import {
   Link
 } from "react-router-dom";
 import Header from './components/Header/Header';
+import Sidebar from './components/Sidebar/Sidebar';
 
 function App() {
   return (
     <div className="app">
       <Router>
         <>
-          <Switch> 
-            <Route path="/" exact>
-              <Header/>
-            </Route>
-          </Switch>
+          <Header/>
+          <AppBody>
+            <Sidebar />
+            <Switch> 
+              <Route path="/" exact>
+                
+              </Route>
+            </Switch>
+          </AppBody>
         </>
       </Router>
     </div>
   );
 }
+
+const AppBody= styled.div`
+
+`
 
 export default App;
