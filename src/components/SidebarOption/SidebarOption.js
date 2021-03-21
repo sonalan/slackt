@@ -1,9 +1,12 @@
 import React from 'react'
 import styled from 'styled-components';
 
-export default function SidebarOption({Icon,title}) {
+export default function SidebarOption({Icon,title,doAction}) {
     return (
-        <SidebarOptionContainer>
+        <SidebarOptionContainer
+            onClick={ doAction && doAction }
+        >
+            
             {Icon&&<Icon fontSize='small'  style={{ padding:10}}/>}
             {Icon? 
                 <h3>{title}</h3>
