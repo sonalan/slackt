@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import StarBorderOutlinedIcon from "@material-ui/icons/StarBorderOutlined"
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined"
+import ChatInput from '../ChatInput/ChatInput';
 
 export default function Chat() {
     return (
@@ -22,7 +23,7 @@ export default function Chat() {
                 </HeaderRight>
             </ChatHeader>
             <ChatMessages>Mesajlar pambık gibi mesajlar</ChatMessages>
-
+            <ChatInput />
             
             </>
         </ChatContainer>
