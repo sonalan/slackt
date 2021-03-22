@@ -1,12 +1,16 @@
 import React from 'react'
 import styled from 'styled-components';
 
-
 import StarBorderOutlinedIcon from "@material-ui/icons/StarBorderOutlined"
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined"
 import ChatInput from '../ChatInput/ChatInput';
 
+import { useSelector } from 'react-redux';
+import { selectRoomId } from '../../features/appSlice';
+
+
 export default function Chat() {
+    const roomId = useSelector(selectRoomId);
     return (
         <ChatContainer>
             <>
@@ -23,7 +27,7 @@ export default function Chat() {
                 </HeaderRight>
             </ChatHeader>
             <ChatMessages>Mesajlar pambık gibi mesajlar</ChatMessages>
-            <ChatInput />
+            <ChatInput channelId={roomId}/>
             
             </>
         </ChatContainer>
