@@ -17,7 +17,10 @@ import AddIcon from '@material-ui/icons/Add';
 
 import SidebarOption from '../SidebarOption/SidebarOption';
 import { db } from '../../firebase';
+import { useCollection } from "react-firebase-hooks/firestore";
 export default function Sidebar() {
+
+    const [channels,loading,error] = useCollection(db.collection("rooms"));
 
     const addChannel = ()=>{
         const channelName = prompt('Please enter a channel name');
@@ -28,6 +31,10 @@ export default function Sidebar() {
             })
             console.log(`${channelName} channel is created`);
         }
+    }
+
+    const loadChannel = (channelId)=>{
+        console.log(channelId)
     }
     return (
         <SidebarContainer>
@@ -54,7 +61,15 @@ export default function Sidebar() {
             <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
             <hr/>
             <SidebarOption Icon={AddIcon} title="Add Channel" doAction={addChannel} />
-            
+            {channels?.docs.map(doc => 
+                <SidebarOption 
+                        key={doc.id} 
+                        id={doc.id}  
+                        title={doc.data().name} 
+                        doAction={loadChannel} />
+            )}
+            {loading&&<span>Loading</span>}
+            {error&&<span>error</span>}
         </SidebarContainer>
     )
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 
-export default function SidebarOption({Icon,title,doAction}) {
+export default function SidebarOption({Icon,title,doAction,id}) {
     return (
         <SidebarOptionContainer
             onClick={ doAction && doAction }
@@ -40,6 +40,7 @@ const SidebarOptionContainer = styled.div`
      }
 `;
 
-const SidebarOptionChannel = styled.div`
-     
-`
+const SidebarOptionChannel = styled.h3`
+     padding:10px 0;
+     font-weight:300;
+`;
