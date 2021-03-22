@@ -2,9 +2,18 @@ import React from 'react'
 import styled from 'styled-components';
 
 export default function SidebarOption({Icon,title,doAction,id}) {
+
+    const clickHandler = ()=> {
+        if(id){
+            doAction(id);
+        }
+        else{
+            doAction()
+        }
+    }
     return (
         <SidebarOptionContainer
-            onClick={ doAction && doAction }
+            onClick={ clickHandler }
         >
             
             {Icon&&<Icon fontSize='small'  style={{ padding:10}}/>}

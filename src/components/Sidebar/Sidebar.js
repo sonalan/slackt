@@ -18,8 +18,11 @@ import AddIcon from '@material-ui/icons/Add';
 import SidebarOption from '../SidebarOption/SidebarOption';
 import { db } from '../../firebase';
 import { useCollection } from "react-firebase-hooks/firestore";
+import {useDispatch} from "react-redux";
+
 export default function Sidebar() {
 
+    const dispatch = useDispatch();
     const [channels,loading,error] = useCollection(db.collection("rooms"));
 
     const addChannel = ()=>{
@@ -33,8 +36,10 @@ export default function Sidebar() {
         }
     }
 
-    const loadChannel = (channelId)=>{
-        console.log(channelId)
+    const loadChannel = (roomId)=>{
+        dispatch({
+            roomId
+        });
     }
     return (
         <SidebarContainer>
