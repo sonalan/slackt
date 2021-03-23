@@ -65,8 +65,8 @@ const ChatInputContainer = styled.div`
         outline:none;
     }
 
-    > form > button >{
-        display: none !important;
+    > form > button {
+        display: none!important;
     }
 `;
 
