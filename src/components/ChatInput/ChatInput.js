@@ -16,15 +16,17 @@ function ChatInput({channelName, channelId}) {
         if(!channelId) {
             return false;
         }
-
+        console.log(channelId,message);
         db.collection('rooms').doc(channelId)
             .collection('messages')
             .add({
-                message:inputRef.current.value,
-                timestamp:firebase.firestore.FieldValue.serverTimestamp,
+                message,
                 userName:'Sinan Onalan',
-                userPic:''
+                userPic:'',
+                timeStamp:firebase.firestore.FieldValue.serverTimestamp(),
+                isDeleted:false
             });
+
         setMessage('');
     }
   return (

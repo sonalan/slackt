@@ -4,10 +4,11 @@ import styled from 'styled-components';
 export default function SidebarOption({Icon,title,doAction,id}) {
 
     const clickHandler = ()=> {
-        if(id){
+        //console.log(Icon,title,doAction,id);
+        if(id && doAction){
             doAction(id);
         }
-        else{
+        else if(doAction){
             doAction()
         }
     }

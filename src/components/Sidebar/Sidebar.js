@@ -19,6 +19,7 @@ import SidebarOption from '../SidebarOption/SidebarOption';
 import { db } from '../../firebase';
 import { useCollection } from "react-firebase-hooks/firestore";
 import {useDispatch} from "react-redux";
+import { enterRoom } from '../../features/appSlice';
 
 export default function Sidebar() {
 
@@ -37,9 +38,8 @@ export default function Sidebar() {
     }
 
     const loadChannel = (roomId)=>{
-        dispatch({
-            roomId
-        });
+        //console.log(roomId);
+        dispatch(enterRoom({roomId:roomId}));
     }
     return (
         <SidebarContainer>
